@@ -57,6 +57,10 @@
         a {
             text-decoration: none;
         }
+
+        button:not(last-of-type) {
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -72,6 +76,9 @@
         <div class="row">
             <button type="button">
                 <a href="/register">註冊點我</a>
+            </button>
+            <button type="button">
+                <a href="/member-list">註冊名單</a>
             </button>
         </div>
     </div>

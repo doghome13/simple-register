@@ -4,7 +4,6 @@ namespace App;
 
 use App\service\database;
 use App\config\Router;
-use App\migrate;
 
 class register
 {
@@ -87,10 +86,6 @@ if ($method === Router::METHOD_POST) {
 
     input {
         width: -webkit-fill-available;
-    }
-
-    button:not(last-of-type) {
-        margin-left: 10px;
     }
 
     label {

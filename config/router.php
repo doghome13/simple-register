@@ -22,7 +22,7 @@ class Router
         }
 
         $fileName = explode('/', $this->url);
-        $fileName = $fileName[1] ?? null;
+        $fileName = $this->covertFileName($fileName[1]);
         $filePath = $fileName
             ? $this->basePath . $fileName . '.php'
             : null;
@@ -64,5 +64,35 @@ class Router
         }
 
         return [];
+    }
+
+    /**
+     * 駝峰式檔名
+     *
+     * @return string
+     */
+    private function covertFileName($name)
+    {
+        $name = $name ?? null;
+
+        if ($name === null) {
+            return $name;
+        }
+
+        // 檢查格式
+        $checkString = explode('-', $name);
+
+        if (!is_array($checkString)) {
+            return $name;
+        }
+
+        $count = count($checkString);
+        $newName = strtolower($checkString[0]);
+
+        for ($i=1; $i < $count; $i++) {
+            $newName = $newName . ucfirst(strtolower($checkString[$i]));
+        }
+
+        return $newName;
     }
 }
