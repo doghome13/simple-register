@@ -1,6 +1,6 @@
 <?php
 
-namespace service;
+namespace App\service;
 
 use mysqli;
 
@@ -49,5 +49,14 @@ class database
     public function getConnect()
     {
         return $this->conn;
+    }
+
+    public function run($sql)
+    {
+        if ($this->conn->query($sql) !== TRUE) {
+            die("Error running sql: " . $this->conn->error);
+        }
+
+        $this->conn->close();
     }
 }

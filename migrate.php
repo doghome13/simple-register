@@ -1,5 +1,9 @@
 <?php
 
+namespace App;
+
+use \App\service\database;
+
 include_once 'service/databaseService.php';
 
 class migrate
@@ -9,7 +13,7 @@ class migrate
     public function __construct($query)
     {
         $this->query = $query;
-        $this->database = new \service\database();
+        $this->database = new database();
         // $this->database->setConnect()->test();
     }
 
@@ -17,36 +21,26 @@ class migrate
     {
         $this->createDB();
 
-        $conn = $this->database->setConnect(static::DATABASE_NAME)->getConnect();
         $sql = "CREATE TABLE members (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(30) NOT NULL,
-            password VARCHAR(30) NOT NULL,
+            password VARCHAR(255) NOT NULL,
             created_at TIMESTAMP
             )";
+        $this->database->setConnect(static::DATABASE_NAME)->run($sql);
 
-        if ($conn->query($sql) === TRUE) {
-            print_r("members 創建成功");
-            echo '<br />';
-        } else {
-            die("Error creating table: " . $conn->error);
-        }
-
-        $conn->close();
+        //
+        print_r("members 創建成功");
+        echo '<br />';
     }
 
     private function createDB()
     {
-        $conn = $this->database->setConnect()->getConnect();
         $sql = "CREATE DATABASE IF NOT EXISTS `" . static::DATABASE_NAME . "`";
+        $this->database->setConnect()->run($sql);
 
-        if ($conn->query($sql) === TRUE) {
-            print_r(static::DATABASE_NAME . " 創建成功");
-            echo '<br />';
-        } else {
-            die("Error creating database: " . $conn->error);
-        }
-
-        $conn->close();
+        //
+        print_r(static::DATABASE_NAME . " 創建成功");
+        echo '<br />';
     }
 }

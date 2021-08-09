@@ -1,6 +1,6 @@
 <?php
 
-namespace config;
+namespace App\config;
 
 class Router
 {
@@ -37,7 +37,8 @@ class Router
 
         include_once $filePath;
         $query = $this->getCurrentQuery();
-        $module = new $fileName($query);
+        $class = 'App\\' .  $fileName;
+        $module = new $class($query);
 
         if (!method_exists($module, $this->method)) {
             die("要呼叫的方法不存在");
@@ -46,7 +47,7 @@ class Router
         // if (is_callable([$module, $this->method]))
         $module->{$this->method}();
 
-        return;
+        die();
     }
 
     /**

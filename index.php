@@ -40,17 +40,25 @@
         .title {
             font-size: 84px;
         }
+
+        .row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
+
 <body>
     <div class="content">
         <?php
-            include_once 'config/router.php';
+        include_once 'config/router.php';
 
-            $router = new \config\Router();
-            $router->run();
+        $router = new \App\config\Router();
+        $router->run();
         ?>
         <p>HELLO!</p>
     </div>
 </body>
+
 </html>
