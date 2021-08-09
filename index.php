@@ -33,6 +33,7 @@
         }
 
         .content {
+            margin: 150px 50px 0 50px;
             text-align: center;
         }
 

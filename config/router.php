@@ -17,13 +17,17 @@ class Router
 
     public function run()
     {
+        if ($this->url === '/') {
+            return;
+        }
+
         $fileName = explode('/', $this->url);
         $fileName = $fileName[1] ?? null;
         $filePath = $fileName
             ? $this->basePath . $fileName . '.php'
             : null;
 
-        if ($this->url !== '/' && $filePath === null) {
+        if ($filePath === null) {
             die('頁面不存在!');
         }
 
@@ -41,6 +45,8 @@ class Router
 
         // if (is_callable([$module, $this->method]))
         $module->{$this->method}();
+
+        return;
     }
 
     /**
