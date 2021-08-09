@@ -43,7 +43,10 @@
 </head>
 <body>
     <?php
-        include './databaseService.php';
+        include_once 'config/router.php';
+
+        $router = new \config\Router();
+        $router->run();
     ?>
     <div class="content">
         <p>HELLO!</p>
