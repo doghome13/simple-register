@@ -69,7 +69,7 @@ if ($method === Router::METHOD_POST) {
 
 <style>
     form {
-        width: 50%;
+        width: 30%;
     }
 
     ul {
@@ -89,19 +89,12 @@ if ($method === Router::METHOD_POST) {
         width: -webkit-fill-available;
     }
 
-    button,
-    a {
-        color: black;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 100;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
     button:not(last-of-type) {
         margin-left: 10px;
+    }
+
+    label {
+        float: left;
     }
 </style>
 
@@ -109,9 +102,14 @@ if ($method === Router::METHOD_POST) {
     <form method="post" action="<?php echo $action; ?>">
         <ul>
             <li>
+                <h2>註冊</h2>
+            </li>
+            <li>
+                <label>名稱</label>
                 <input type="text" id="member-name" name="name" value="<?php echo $name ?? ''; ?>" />
             </li>
             <li>
+                <label>密碼</label>
                 <input type="password" id="member-password" name="password" value="<?php echo $password ?? ''; ?>" />
             </li>
             <li>

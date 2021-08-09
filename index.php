@@ -46,6 +46,17 @@
             display: flex;
             justify-content: center;
         }
+
+        button,
+        a {
+            color: black;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+        }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -58,6 +69,11 @@
         $router->run();
         ?>
         <p>HELLO!</p>
+        <div class="row">
+            <button type="button">
+                <a href="/register">註冊點我</a>
+            </button>
+        </div>
     </div>
 </body>
 
