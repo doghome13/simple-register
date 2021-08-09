@@ -37,6 +37,15 @@ class register
 
         include_once 'service/databaseService.php';
         $database = new database();
+
+        // 查詢是否重複
+        $sql = "SELECT `id` AS `count` FROM members WHERE `name` = '{$name}'";
+        $count = $database->setConnect($dbName)->run($sql)->num_rows;
+
+        if ($count) {
+            die('名稱重複');
+        }
+
         $sql = "INSERT INTO members (`name`, `password`, `created_at`)
             VALUES ('{$name}', PASSWORD('{$password}'), '{$datetime}')";
         $database->setConnect($dbName)->run($sql);

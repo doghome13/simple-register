@@ -51,12 +51,23 @@ class database
         return $this->conn;
     }
 
+    /**
+     * 執行 SQL
+     *
+     * @return mix
+     */
     public function run($sql)
     {
-        if ($this->conn->query($sql) !== TRUE) {
+        $res = $this->conn->query($sql) ?? null;
+
+        if ($res === null) {
+            echo $sql;
+            echo '<br />';
             die("Error running sql: " . $this->conn->error);
         }
 
         $this->conn->close();
+
+        return $res;
     }
 }
