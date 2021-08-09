@@ -42,13 +42,13 @@
     </style>
 </head>
 <body>
-    <?php
-        include_once 'config/router.php';
-
-        $router = new \config\Router();
-        $router->run();
-    ?>
     <div class="content">
+        <?php
+            include_once 'config/router.php';
+
+            $router = new \config\Router();
+            $router->run();
+        ?>
         <p>HELLO!</p>
     </div>
 </body>
